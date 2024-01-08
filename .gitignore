@@ -1,0 +1,15 @@
+NotShared/
+*.zip
+*.ncb
+*.bsc
+*.pch
+*.sbr
+*.ilk
+*.idb
+*.obj
+*.DS_Store
+*.pdb
+windows_vc/x64
+windows_vc/vcpkg_installed
+.vs/
+AndroidGradle/.idea

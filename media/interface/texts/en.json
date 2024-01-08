@@ -1,0 +1,33 @@
+{
+  "name": "English",
+  "strings": {
+    "MAINMENU_PLAY": "Play",
+    "MAINMENU_OPTIONS": "Options",
+    "MAINMENU_ABOUT": "About",
+    "MAINMENU_QUIT": "Quit",
+
+    "SCORE": "Score",
+
+    "OPTIONSMENU_AUDIO": "Audio",
+    "OPTIONSMENU_AUDIO_ON": "On",
+    "OPTIONSMENU_AUDIO_OFF": "Off",
+    "OPTIONSMENU_MIN": "Min",
+    "OPTIONSMENU_MAX": "Max",
+    "OPTIONSMENU_SFX_VOL": "SFX volume",
+    "OPTIONSMENU_MUSIC_VOL": "Music volume",
+    "OPTIONSMENU_FULLSCREEN": "Fullscreen mode",
+    "OPTIONSMENU_THEME": "Theme",
+
+    "ABOUTMENU_TEXT1": "Later we will put some info about this game here... :)",
+
+    "LANGUAGESELECTMENU_TITLE": "Choose language",
+
+    "THEMESELECTMENU_TITLE": "Choose theme",
+
+    "THEMES_DEFAULT": "Default",
+    "THEMES_BARE": "Barebones",
+
+    "BACK": "Back",
+    "CANCEL": "Cancel"
+  }
+}

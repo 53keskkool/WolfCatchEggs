@@ -1,0 +1,33 @@
+{
+  "name": "Русский",
+  "strings": {
+    "MAINMENU_PLAY": "Играть",
+    "MAINMENU_OPTIONS": "Настройки",
+    "MAINMENU_ABOUT": "Об игре",
+    "MAINMENU_QUIT": "Выйти",
+
+    "SCORE": "Счёт",
+
+    "OPTIONSMENU_AUDIO": "Звук",
+    "OPTIONSMENU_AUDIO_ON": "Вкл",
+    "OPTIONSMENU_AUDIO_OFF": "Выкл",
+    "OPTIONSMENU_MIN": "Мин",
+    "OPTIONSMENU_MAX": "Макс",
+    "OPTIONSMENU_SFX_VOL": "Громкость звуков",
+    "OPTIONSMENU_MUSIC_VOL": "Громкость музыки",
+    "OPTIONSMENU_FULLSCREEN": "Полноэкранный режим",
+    "OPTIONSMENU_THEME": "Тема",
+
+    "ABOUTMENU_TEXT1": "Потом тут будет какой-нибудь текст про эту игру... :)",
+
+    "LANGUAGESELECTMENU_TITLE": "Выберите язык",
+
+    "THEMESELECTMENU_TITLE": "Выберите тему",
+
+    "THEMES_DEFAULT": "По умолчанию",
+    "THEMES_BARE": "Минимализм",
+
+    "BACK": "Назад",
+    "CANCEL": "Отмена"
+  }
+}
