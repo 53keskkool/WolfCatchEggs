@@ -3,4 +3,4 @@
 
 void CreateMainMenu(VariantList* pVList);
 
-Entity * MainMenuCreate(Entity *pParentEnt);
+Entity * MainMenuCreate(Entity *pParentEnt, bool bAnimations = true);

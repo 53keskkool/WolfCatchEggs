@@ -58,6 +58,9 @@ void LanguageSelectMenuAddScrollContent(Entity* pParent)
 
 	float x = 5;
 	float y = 0;
+	eFont font;
+	float scale;
+	GetFontAndScaleToFitThisLinesPerScreenY(&font, &scale, 23);
 
 	map<string, VariantList> langs;
 
@@ -93,12 +96,12 @@ void LanguageSelectMenuAddScrollContent(Entity* pParent)
 	string curLang = GetApp()->GetVar("language")->GetString();
 	for (auto& l : langs)
 	{
-		Entity* pCheckbox = CreateCheckbox(pParent, l.first, l.second.Get(0).GetString(), x, y, curLang == l.first, FONT_SMALL, 1, curLang == l.first);
+		Entity* pCheckbox = CreateCheckbox(pParent, l.first, l.second.Get(0).GetString(), x, y, curLang == l.first, font, scale, curLang == l.first);
 		pCheckbox->GetEntityByName("_text" + l.first)->GetVar("color")->Set(GET_THEMEMGR->GetTextColor());
 		pCheckbox->GetFunction("OnButtonSelected")->sig_function.connect(LanguageSelectMenuOnSelect);
 		CL_Vec2f boxSize = GetSize2DEntity(pCheckbox);
 
-		y += boxSize.y + iPhoneMapY(5);
+		y += boxSize.y + iPhoneMapY(2);
 	}
 
 	VariantList vList(pParent->GetParent());
@@ -107,8 +110,7 @@ void LanguageSelectMenuAddScrollContent(Entity* pParent)
 
 Entity* LanguageSelectMenuCreate(Entity* pParentEnt)
 {
-	Entity* EntityRoot = GetEntityRoot();
-	if (EntityRoot->GetEntityByName("pop_up_darken")) return NULL; //We won't create pop up on a pop up
+	if (GetEntityRoot()->GetEntityByName("pop_up_darken")) return NULL; //We won't create pop up on a pop up
 
 	Entity* pDarken = pParentEnt->AddEntity(new Entity("pop_up_darken"));
 	FadeScreen(pDarken, 0, 0.7f, 400, false);

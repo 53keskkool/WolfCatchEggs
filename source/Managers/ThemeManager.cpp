@@ -2,7 +2,8 @@
 #include "ThemeManager.h"
 #include "Core/json.hpp"
 
-bool ThemeManager::Init(string name) {
+bool ThemeManager::Init(string name)
+{
 	m_name = name;
 
 	FileInstance file("game/" + m_name + "/params.json");
@@ -27,6 +28,17 @@ bool ThemeManager::Init(string name) {
 		m_allowedShelvesOverlap = j["allowedShelvesOverlap"];
 		m_eggSpawnCords.x = j["eggSpawnX"];
 		m_eggSpawnCords.y = j["eggSpawnY"];
+		m_eggRotationCenter.x = j["eggRotationCenterX"];
+		m_eggRotationCenter.y = j["eggRotationCenterY"];
+		m_eggRotation = j["eggRotation"];
+		m_eggRotationMod = j["eggRotationMod"];
+		m_eggScale = j["eggScale"];
+		m_bottomEggScale = j["bottomEggScale"];
+		m_brokenEggScale = j["brokenEggScale"];
+		m_bBrokenEggInFront = j["brokenEggInFront"];
+		m_shelfThickness = j["shelfThickness"];
+		m_bAllowBGScaling = j["allowBGScaling"];
+		m_bScoreBG = j["scoreBG"];
 	}
 	catch (std::exception& e)
 	{
@@ -37,7 +49,8 @@ bool ThemeManager::Init(string name) {
 	return true;
 }
 
-vector<pair<string,string>> ThemeManager::GetListOfThemes() {
+vector<pair<string,string>> ThemeManager::GetListOfThemes()
+{
 	vector<pair<string, string>> result;
 
 	FileInstance file("game/themes.json");
@@ -52,7 +65,8 @@ vector<pair<string,string>> ThemeManager::GetListOfThemes() {
 		nlohmann::json j = nlohmann::json::parse(file.GetAsChars());
 
 		nlohmann::json themes = j["themes"];
-		for (auto o : themes) {
+		for (auto o : themes)
+		{
 			result.push_back({ o["codename"], o["name"] });
 		}
 	}
@@ -75,7 +89,67 @@ vector<pair<string,string>> ThemeManager::GetListOfThemes() {
 	return result;
 }
 
-string ThemeManager::GetFilename(string texture) {
+vector<pair<string, string>> ThemeManager::GetThemesCredits()
+{
+	vector<pair<string, string>> result;
+
+	FileInstance file("game/themes.json");
+	if (!file.IsLoaded())
+	{
+		LogError("Couldn't open themes file, is it in right place?");
+		return vector<pair<string, string>>();
+	}
+
+	try
+	{
+		nlohmann::json j = nlohmann::json::parse(file.GetAsChars());
+
+		nlohmann::json themes = j["themes"];
+		for (auto o : themes)
+		{
+			result.push_back({ o["name"], o["codename"] });
+		}
+	}
+	catch (std::exception& e)
+	{
+		LogError("Caught exception while loading themes list: %s", e.what());
+		return vector<pair<string, string>>();
+	}
+
+	for (size_t i = 0; i < result.size(); i++)
+	{
+		FileInstance theme("game/" + result[i].second + "/params.json");
+		if (!theme.IsLoaded())
+		{
+			result.erase(result.begin() + i);
+			i--;
+			continue;
+		}
+
+		try
+		{
+			nlohmann::json j = nlohmann::json::parse(theme.GetAsChars());
+
+			result[i].second = j["author"];
+		}
+		catch (...) {}
+	}
+
+	return result;
+}
+
+string ThemeManager::GetDefaultTheme()
+{
+	static string defaultTheme = "";
+	if (defaultTheme.empty())
+	{
+		defaultTheme = GetListOfThemes()[0].first; //this might (and probably will) crash, but i don't care, because game wouldn't work without themes anyway
+	}
+	return defaultTheme;
+}
+
+string ThemeManager::GetFilename(string texture)
+{
 	if (m_name == "default") return texture; //default textures will be stored in the root, so we can fallback to them
 
 	string result = texture;

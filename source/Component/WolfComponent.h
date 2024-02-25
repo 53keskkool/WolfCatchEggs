@@ -17,6 +17,8 @@ private:
 	void UpdateSizeVar();
 
 	void OnScaleChanged(Variant* pDataObject);
+	void OnPause(VariantList* pVList);
+	void OnGameOver(VariantList* pVList);
 	void OnArcadeInput(VariantList* pVList);
 	//touch stuff
 	void OnTouchStart(VariantList* pVList);
@@ -41,4 +43,7 @@ private:
 	CL_Vec2f m_touchPos = CL_Vec2f(0, 0);
 	float m_touchUpDelim = 0;
 	float m_touchRightDelim = 0;
+
+	bool m_bGameOver = false;
+	bool m_bPaused = false;
 };

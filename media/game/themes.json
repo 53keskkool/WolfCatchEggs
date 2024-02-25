@@ -1,8 +1,48 @@
 {
-  "themes": [
-    {
-      "codename": "default",
-      "name": "{THEMES_DEFAULT}"
-    }
-  ]
+	"themes": [
+		{
+			"codename": "radium",
+			"name": "{THEMES_RADIUM}"
+		},
+		{
+			"codename": "pizza",
+			"name": "{THEMES_PIZZA}"
+		},
+		{
+			"codename": "catsAndMice",
+			"name": "{THEMES_CATSANDMICE}"
+		},
+		{
+			"codename": "babushka",
+			"name": "{THEMES_BABUSHKA}"
+		},
+		{
+			"codename": "drawnRealism",
+			"name": "{THEMES_DRAWNREALISM}"
+		},
+		{
+			"codename": "hedgehog",
+			"name": "{THEMES_HEDGEHOG}"
+		},
+		{
+			"codename": "likesDislikes",
+			"name": "{THEMES_LIKESDISLIKES}"
+		},
+		{
+			"codename": "pinkLeo",
+			"name": "{THEMES_PINKLEO}"
+		},
+		{
+			"codename": "monkey",
+			"name": "{THEMES_MONKEY}"
+		},
+		{
+			"codename": "leoMoney",
+			"name": "{THEMES_LEOMONEY}"
+		},
+		{
+			"codename": "barebones",
+			"name": "{THEMES_BARE}"
+		}
+	]
 }

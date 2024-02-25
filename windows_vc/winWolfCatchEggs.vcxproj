@@ -2361,12 +2361,30 @@
     <ClCompile Include="..\source\Component\WolfComponent.cpp" />
     <ClCompile Include="..\source\GUI\AboutMenu.cpp" />
     <ClCompile Include="..\source\GUI\GameMenu.cpp" />
+    <ClCompile Include="..\source\GUI\GamemodeSelectMenu.cpp" />
+    <ClCompile Include="..\source\GUI\GameOverMenu.cpp" />
     <ClCompile Include="..\source\GUI\GUIUtils.cpp" />
     <ClCompile Include="..\source\GUI\LanguageSelectMenu.cpp" />
     <ClCompile Include="..\source\GUI\MainMenu.cpp" />
     <ClCompile Include="..\source\GUI\OptionsMenu.cpp" />
     <ClCompile Include="..\source\GUI\OverlapTestMenu.cpp" />
+    <ClCompile Include="..\source\GUI\PauseMenu.cpp" />
+    <ClCompile Include="..\source\GUI\PhoneWebMenu.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_FMOD_GL|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_GL|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='GL_SDL_Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_GL|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='GL_SDL_Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_FMOD_GL|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_FMOD_GL|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_GL|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='GL_SDL_Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_GL|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='GL_SDL_Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_FMOD_GL|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="..\source\GUI\ThemeSelectMenu.cpp" />
+    <ClCompile Include="..\source\GUI\TutorialMenu.cpp" />
     <ClCompile Include="..\source\Managers\ThemeManager.cpp" />
     <ClCompile Include="..\source\Managers\TranslationManager.cpp" />
   </ItemGroup>
@@ -2433,10 +2451,28 @@
     <ClInclude Include="..\source\Component\WolfComponent.h" />
     <ClInclude Include="..\source\Core\json.hpp" />
     <ClInclude Include="..\source\GUI\GameMenu.h" />
+    <ClInclude Include="..\source\GUI\GamemodeSelectMenu.h" />
+    <ClInclude Include="..\source\GUI\GameOverMenu.h" />
     <ClInclude Include="..\source\GUI\LanguageSelectMenu.h" />
     <ClInclude Include="..\source\GUI\OptionsMenu.h" />
     <ClInclude Include="..\source\GUI\OverlapTestMenu.h" />
+    <ClInclude Include="..\source\GUI\PauseMenu.h" />
+    <ClInclude Include="..\source\GUI\PhoneWebMenu.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_FMOD_GL|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_GL|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='GL_SDL_Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_GL|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='GL_SDL_Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_FMOD_GL|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_FMOD_GL|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_GL|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='GL_SDL_Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_GL|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='GL_SDL_Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_FMOD_GL|x64'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="..\source\GUI\ThemeSelectMenu.h" />
+    <ClInclude Include="..\source\GUI\TutorialMenu.h" />
     <ClInclude Include="..\source\Managers\ThemeManager.h" />
     <ClInclude Include="..\source\Managers\TranslationManager.h" />
     <CustomBuild Include="..\..\shared\Entity\TemplateComponent.h">

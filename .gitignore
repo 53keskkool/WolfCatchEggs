@@ -9,7 +9,10 @@ NotShared/
 *.obj
 *.DS_Store
 *.pdb
+windows_vc/Win32
+windows_vc/WolfCatchEggs
 windows_vc/x64
 windows_vc/vcpkg_installed
 .vs/
+bin
 AndroidGradle/.idea

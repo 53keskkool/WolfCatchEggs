@@ -11,10 +11,12 @@ public:
 	void OnRemove();
 
 private:
+	void OnPause(VariantList* pVList);
 
 	void UpdateSizeVar();
 
 	void OnScaleChanged(Variant* pDataObject);
+	void OnAngleChanged(Variant* pDataObject);
 
 	void OnRender(VariantList* pVList);
 	void OnUpdate(VariantList* pVList);
@@ -36,9 +38,12 @@ private:
 	SurfaceAnim* m_pTexBroken = NULL;
 
 	float m_alrdWent = 0; //how much did we go in X
+	bool m_bRotating = true;
 	bool m_bRotatingRight = false;
 	float m_rotationMod = 2.25f;
 
 	bool m_bBroken = false;
 	uint32 m_startFadeOutAt = 0;
+
+	bool m_bPaused = false;
 };

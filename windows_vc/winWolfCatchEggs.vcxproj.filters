@@ -649,6 +649,21 @@
     <ClCompile Include="..\source\Component\EggComponent.cpp">
       <Filter>source\Component</Filter>
     </ClCompile>
+    <ClCompile Include="..\source\GUI\GameOverMenu.cpp">
+      <Filter>source\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\GUI\PauseMenu.cpp">
+      <Filter>source\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\GUI\PhoneWebMenu.cpp">
+      <Filter>source\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\GUI\TutorialMenu.cpp">
+      <Filter>source\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\source\GUI\GamemodeSelectMenu.cpp">
+      <Filter>source\GUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\source\App.h">
@@ -1124,6 +1139,21 @@
     </ClInclude>
     <ClInclude Include="..\source\Component\EggComponent.h">
       <Filter>source\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\GUI\GameOverMenu.h">
+      <Filter>source\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\GUI\PauseMenu.h">
+      <Filter>source\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\GUI\PhoneWebMenu.h">
+      <Filter>source\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\GUI\TutorialMenu.h">
+      <Filter>source\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\source\GUI\GamemodeSelectMenu.h">
+      <Filter>source\GUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -36,6 +36,9 @@ void WolfComponent::OnAdd(Entity* pEnt)
 	m_touchRightDelim = GetScreenSizeXf() / 2;
 	//egg fell, check if we catched it
 	pParent->GetParent()->GetFunction("OnEggFall")->sig_function.connect(1, boost::bind(&WolfComponent::OnEggFall, this, _1));
+	//game is over, don't move wolf anymore
+	pMenu->GetFunction("OnGameOver")->sig_function.connect(1, boost::bind(&WolfComponent::OnGameOver, this, _1));
+	pMenu->GetFunction("OnPause")->sig_function.connect(1, boost::bind(&WolfComponent::OnPause, this, _1));
 
 	//so when wolf gets scaled size updates too...
 	pParent->GetVar("scale2d")->GetSigOnChanged()->connect(boost::bind(&WolfComponent::OnScaleChanged, this, _1));
@@ -46,6 +49,10 @@ void WolfComponent::OnAdd(Entity* pEnt)
 	m_pWolfDown = GetResourceManager()->GetSurfaceAnim(GET_THEMEMGR->GetFilename("game/wolf_down.rttex"));
 	m_pWolfDown->SetupAnim(1, 1);
 	UpdateSizeVar();
+
+	//let's make wolf look at random pos
+	m_bLookingUp = (bool)RandomInt(0, 1);
+	m_bLookingRight = (bool)RandomInt(0, 1);
 }
 
 void WolfComponent::OnRemove()
@@ -60,9 +67,18 @@ void WolfComponent::OnEggFall(VariantList* pVList)
 	if (pEgg->GetVar("up")->GetUINT32() == m_bLookingUp && pEgg->GetVar("right")->GetUINT32() == m_bLookingRight)
 	{
 		pEgg->SetTaggedForDeletion(); //tagging for deletion, because we caught it
-		VariantList vlist;
-		GetParent()->GetParent()->GetFunction("OnEggCatch")->sig_function(&vlist); //let whole level know about it, so it gets counted
+		GetParent()->GetParent()->GetFunction("OnEggCatch")->sig_function(pVList); //let whole level know about it, so it gets counted
 	}
+}
+
+void WolfComponent::OnPause(VariantList* pVList)
+{
+	m_bPaused = pVList->Get(0).GetUINT32();
+}
+
+void WolfComponent::OnGameOver(VariantList* pVList)
+{
+	m_bGameOver = true;
 }
 
 void WolfComponent::UpdateSizeVar()
@@ -72,6 +88,7 @@ void WolfComponent::UpdateSizeVar()
 
 void WolfComponent::OnArcadeInput(VariantList* pVList)
 {
+	if (m_bGameOver || m_bPaused) return;
 	int vKey = pVList->Get(0).GetUINT32();
 	bool bIsDown = pVList->Get(1).GetUINT32() != 0;
 
@@ -97,6 +114,7 @@ void WolfComponent::OnArcadeInput(VariantList* pVList)
 
 void WolfComponent::OnTouchStart(VariantList* pVList)
 {
+	if (m_bGameOver || m_bPaused) return;
 	TouchTrackInfo* touch = GetBaseApp()->GetTouch(pVList->Get(2).GetUINT32());
 	if (touch->WasHandled()) {
 		m_bTouching = false;
@@ -108,6 +126,7 @@ void WolfComponent::OnTouchStart(VariantList* pVList)
 
 void WolfComponent::OnOverMove(VariantList* pVList)
 {
+	if (m_bGameOver || m_bPaused) return;
 	TouchTrackInfo* touch = GetBaseApp()->GetTouch(pVList->Get(2).GetUINT32());
 	if (touch->WasHandled()) {
 		m_bTouching = false;
@@ -136,6 +155,7 @@ void WolfComponent::OnRender(VariantList* pVList)
 
 void WolfComponent::OnUpdate(VariantList* pVList)
 {
+	if (m_bGameOver || m_bPaused) return;
 	if (m_bTouching)
 	{
 		m_bLookingUp = m_touchPos.y < m_touchUpDelim;

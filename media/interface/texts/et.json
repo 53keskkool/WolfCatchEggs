@@ -1,0 +1,84 @@
+{
+  "name": "Eesti keel",
+  "strings": {
+    "MAINMENU_PLAY": "Mängi",
+    "MAINMENU_THEME": "Teema",
+    "MAINMENU_GAMEMODE": "Režiim",
+    "MAINMENU_TUTORIAL": "Tutvustus",
+    "MAINMENU_OPTIONS": "Sätted",
+    "MAINMENU_ABOUT": "Mängust",
+
+    "PHONEWEB_ROTATE": "Palun pööra oma telefoni",
+    "PHONEWEB_BEGIN": "Vajuta, et alustada",
+    "PHONEWEB_CONTINUE": "Vajuta, et jätkata",
+
+    "TUTORIAL_WANT": "Kas soovid vaadata mängu tutvustust?",
+    "TUTORIAL_NO": "Ei",
+    "TUTORIAL_YES": "Jah",
+    "TUTORIAL_MSG1": "Kasuta klaviatuuri nooli, et vaadata erinevas suunas.",
+    "TUTORIAL_MSG1_TOUCH": "Selles mängus on ekraan jaganud neljaks osaks. Vajuta ühele osale, et püüda seal.",
+    "TUTORIAL_MSG2": "Selles mängus on palju `9teemasid``. Sa leiad need peaekraanilt.",
+    "TUTORIAL_MSG3": "Sätetes saab muuta `1muusika ja heli tugevust``, lülitada sisse `1täisekraani`` ja muuta mängu `1raskust``.",
+    "TUTORIAL_MSG4": "Peaekraanil saab muuta `1mängu režiimi``. Vajutades režiimi nimele, saab lugeda režiimi kirjeldust.",
+    "TUTORIAL_MSG5": "Kui mäng on liiga raske, muuda raskust sätetes.\nEdukat mängu!",
+    "TUTORIAL_CONT": "Vajuta, et jätkata",
+    "TUTORIAL_BEGIN": "Vajuta, et alustada",
+
+    "SCORE": "Punktid",
+    "GAMEOVER_TITLE": "Mäng on läbi!",
+    "GAMEOVER_SCORE": "Sinu punktid",
+    "GAMEOVER_URBEST": "Sinu rekord",
+    "GAMEOVER_NEWBEST": "UUS REKORD!",
+    "GAMEOVER_TRYAGAIN": "Proovid veel?",
+
+    "PAUSE_TITLE": "Paus",
+    "PAUSE_CONTINUE": "Jätka",
+    "PAUSE_END": "Lõpeta Mäng",
+
+    "OPTIONSMENU_AUDIO": "Heli",
+    "OPTIONSMENU_AUDIO_ON": "Sisse",
+    "OPTIONSMENU_AUDIO_OFF": "Välja",
+    "OPTIONSMENU_MIN": "Min",
+    "OPTIONSMENU_MAX": "Max",
+    "OPTIONSMENU_SFX_VOL": "Heli tugevus",
+    "OPTIONSMENU_MUSIC_VOL": "Muusika tugevus",
+    "OPTIONSMENU_FULLSCREEN": "Täisekraan",
+    "OPTIONSMENU_DIF": "Raskus",
+
+    "ABOUTMENU_TEXT1": "Selle mängu koostas Tallinna 53. Keskkooli õpilane `9Marek Müürsepp`` oma uurimistöö osana.\nKunsti ja meedia õpetaja `9Ervin Adojaan`` aitas selle mängu loomisel.",
+    "ABOUTMENU_SOURCE": "Lähtekood",
+    "ABOUTMENU_THEMES": "Teemade loojad",
+    "ABOUTMENU_THEMESTEXT": "Siin te võite näha kes lõi iga teemat.",
+    "ABOUTMENU_CREDITS": "Tänud",
+    "ABOUTMENU_PRODUCTINCLUDES": "See toode kasutab:",
+
+    "LANGUAGESELECTMENU_TITLE": "Valige keel",
+
+    "THEMESELECTMENU_TITLE": "Valige teema",
+
+    "GAMEMODESELECTMENU_TITLE": "Valige režiim",
+    "GAMEMODESELECTMENU_GM0": "Tavaline",
+    "GAMEMODESELECTMENU_ABOUT0": "`9Tavalises`` režiimis on vaja lihtsalt asju püüda. Sa `4kaotad`` elusid, kui asjad maha kukkuvad!",
+    "GAMEMODESELECTMENU_GM1": "Peastarvutamine",
+    "GAMEMODESELECTMENU_ABOUT1": "`9Peastarvutamise`` režiimis ekraanil on mingi arv, mis tuleb kokku saada püütavatest arvudest. Arvud võivad selles režiimis kukkuda, mitte midagi ei juhtu.\n`5(Pausi menüüs on mingi vihje, aga pead ise aru saama, kus see on ja kuidas seda kasutada)``",
+    "GAMEMODESELECTMENU_GM2": "Sõnaliigid",
+    "GAMEMODESELECTMENU_ABOUT2": "`9Sõnaliikide`` režiimis on vaja püüdma `1sõnu``, mis on ekraanil kujutatud `1sõnaliik``. Sa `4kaotad`` elu, kui õige sõna kukub või kui sa püüad vale sõna.",
+
+    "THEMES_RANDOM": "Juhuslik",
+    "THEMES_RADIUM": "Raadium",
+    "THEMES_DRAWNREALISM": "Joonistatud Realism",
+    "THEMES_CATSANDMICE": "Kassid ja Hiired",
+    "THEMES_HEDGEHOG": "Siil",
+    "THEMES_LIKESDISLIKES": "Likes-Dislikes",
+    "THEMES_BABUSHKA": "Babushka",
+    "THEMES_PINKLEO": "Pink Leo",
+    "THEMES_MONKEY": "Džungel",
+    "THEMES_LEOMONEY": "Leoraha",
+    "THEMES_PIZZA": "Pitsa",
+    "THEMES_BARE": "Kontuurid",
+
+    "DONE": "Valmis",
+    "BACK": "Tagasi",
+    "CANCEL": "Tühista"
+  }
+}

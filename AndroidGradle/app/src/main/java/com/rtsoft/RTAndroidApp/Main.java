@@ -24,8 +24,8 @@ public class Main extends SharedActivity
 
 		dllname= "RTAndroidApp"; //this doesn't need to be changed
 
-		System.loadLibrary("fmod");
-		org.fmod.FMOD.init(this);
+		//System.loadLibrary("fmod");
+		//org.fmod.FMOD.init(this);
 
 		System.loadLibrary(dllname);
 		super.onCreate(savedInstanceState);

@@ -2,43 +2,53 @@
 #include "Entity/EntityUtils.h"
 #include "GUIUtils.h"
 #include "ThemeSelectMenu.h"
-#include "OptionsMenu.h"
+#include "MainMenu.h"
 
 void ThemeSelectMenuOnSelect(VariantList* pVList)
 {
 	Entity* pEntClicked = pVList->Get(1).GetEntity();
+
+	Entity* pMenu = GetEntityRoot()->GetEntityByName("PopUpMenu");
+	if (!pMenu) return;
+	FadeOutEntity(pMenu);
+	GetMessageManager()->CallEntityFunction(pMenu, 500, "OnDelete");
+	DisableAllButtonsEntity(pMenu);
+
+	Entity* pDarken = GetEntityRoot()->GetEntityByName("pop_up_darken");
+	if (!pDarken) return;
+	FadeScreen(pDarken, 0, 0, 400, true);
+	KillEntity(pDarken, 400);
+	pDarken->SetName("");
+
 	string name = pEntClicked->GetName();
 
-	Entity* pOptionsMenu = GetEntityRoot()->GetEntityByName("OptionsMenu");
+	Entity* pMainMenu = GetEntityRoot()->GetEntityByName("MainMenu");
 	if (name == GetApp()->GetVar("theme")->GetString() || name == "Cancel")
 	{
-		Entity* pMenu = GetEntityRoot()->GetEntityByName("PopUpMenu");
-		FadeOutEntity(pMenu);
-		GetMessageManager()->CallEntityFunction(pMenu, 500, "OnDelete");
-		DisableAllButtonsEntity(pMenu);
-
-		Entity* pDarken = GetEntityRoot()->GetEntityByName("pop_up_darken");
-		FadeScreen(pDarken, 0, 0, 400, true);
-		KillEntity(pDarken, 400);
-		pDarken->SetName("");
-
-		EnableAllButtonsEntity(pOptionsMenu);
-		EnableComponentByName(pOptionsMenu, "CustomInput");
+		EnableAllButtonsEntity(pMainMenu);
+		EnableComponentByName(pMainMenu, "CustomInput");
 		return;
 	}
 
-	pOptionsMenu->SetTaggedForDeletion();
-	pOptionsMenu->SetName("");
+	pMainMenu->SetTaggedForDeletion();
+	pMainMenu->SetName("");
+
+	if (name == "Random")
+	{
+		vector<pair<string, string>> themes = GetApp()->GetThemeManager()->GetListOfThemes();
+		name = themes[RandomInt(0, themes.size() - 1)].first;
+	}
 
 	GetApp()->GetVar("theme")->Set(name);
 	if (!GetApp()->GetThemeManager()->Init(name))
 	{
-		LogError("Failed to load translation %s, falling back to default", name.c_str());
-		GetApp()->GetVar("theme")->Set("default");
-		GetApp()->GetThemeManager()->Init("default");
+		LogError("Failed to load theme %s, falling back to default", name.c_str());
+		GetApp()->GetVar("theme")->Set(GET_THEMEMGR->GetDefaultTheme());
+		GetApp()->GetThemeManager()->Init(GET_THEMEMGR->GetDefaultTheme());
 	}
 
-	OptionsMenuCreate(GetEntityRoot()->GetEntityByName("GUI"));
+	GetAudioManager()->StopMusic();
+	MainMenuCreate(GetEntityRoot()->GetEntityByName("GUI"));
 }
 
 void ThemeSelectMenuAddScrollContent(Entity* pParent)
@@ -48,16 +58,21 @@ void ThemeSelectMenuAddScrollContent(Entity* pParent)
 
 	float x = 5;
 	float y = 0;
+	eFont font;
+	float scale;
+	GetFontAndScaleToFitThisLinesPerScreenY(&font, &scale, 23);
 
 	string curTheme = GetApp()->GetVar("theme")->GetString();
-	for (auto& l : GetApp()->GetThemeManager()->GetListOfThemes())
+	vector<pair<string, string>> themes = GetApp()->GetThemeManager()->GetListOfThemes();
+	if (themes.size() > 1) themes.insert(themes.begin(), { "Random", "{THEMES_RANDOM}" });
+	for (auto& l : themes)
 	{
-		Entity* pCheckbox = CreateCheckbox(pParent, l.first, GET_LOCTEXT(l.second), x, y, curTheme == l.first, FONT_SMALL, 1, curTheme == l.first);
+		Entity* pCheckbox = CreateCheckbox(pParent, l.first, GET_LOCTEXT(l.second), x, y, curTheme == l.first, font, scale, curTheme == l.first);
 		pCheckbox->GetEntityByName("_text" + l.first)->GetVar("color")->Set(GET_THEMEMGR->GetTextColor());
 		pCheckbox->GetFunction("OnButtonSelected")->sig_function.connect(ThemeSelectMenuOnSelect);
 		CL_Vec2f boxSize = GetSize2DEntity(pCheckbox);
 
-		y += boxSize.y + iPhoneMapY(5);
+		y += boxSize.y + iPhoneMapY(2);
 	}
 
 	VariantList vList(pParent->GetParent());
@@ -66,8 +81,7 @@ void ThemeSelectMenuAddScrollContent(Entity* pParent)
 
 Entity* ThemeSelectMenuCreate(Entity* pParentEnt)
 {
-	Entity* EntityRoot = GetEntityRoot();
-	if (EntityRoot->GetEntityByName("pop_up_darken")) return 0; //We won't create pop up on a pop up
+	if (GetEntityRoot()->GetEntityByName("pop_up_darken")) return 0; //We won't create pop up on a pop up
 
 	Entity* pDarken = pParentEnt->AddEntity(new Entity("pop_up_darken"));
 	FadeScreen(pDarken, 0, 0.7f, 400, false);
