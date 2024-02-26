@@ -85,7 +85,7 @@ void EggComponent::UpdateSizeVar()
 {
 	if (!m_pTexBroken || !m_bBroken) GetParent()->GetVar("size2d")->Set(m_pTex->GetFrameSize() * (*m_pScale2d));
 	else GetParent()->GetVar("size2d")->Set(m_pTexBroken->GetFrameSize() * (*m_pScale2d));
-	m_rotationMod = ((m_pSize2d->x + m_pSize2d->y) / 45) * GET_THEMEMGR->GetEggRotationMod();
+	m_rotationMod = (360.0f / ((m_pSize2d->x + m_pSize2d->y) * 1.5f)) * GET_THEMEMGR->GetEggRotationMod();
 }
 
 void EggComponent::OnRender(VariantList* pVList)

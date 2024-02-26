@@ -404,17 +404,17 @@ Variant * App::GetVar( const string &keyName )
 
 std::string App::GetVersionString()
 {
-	return "V1.0";
+	return "V1.01";
 }
 
 float App::GetVersion()
 {
-	return 1.0f;
+	return 1.01f;
 }
 
 int App::GetBuild()
 {
-	return 1;
+	return 2;
 }
 
 #ifdef PLATFORM_HTML5

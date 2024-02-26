@@ -291,7 +291,9 @@ void EggManager::SendScoreUpdate()
 void EggManager::OnScreenSizeChanged(VariantList* pVList)
 {
 	PrepareGame();
-	SendScoreUpdate();
+	//we need to delay score update for a bit, because info box might have not been recreated yet
+	VariantList vlist(m_score, uint32(m_lives));
+	GetMessageManager()->CallEntityFunction(GetParent(), 0, "OnScoreUpdate", &vlist);
 	m_bSpawnEggAtSamePos = true;
 }
 

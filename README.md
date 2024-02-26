@@ -1,5 +1,5 @@
 # WolfCatchEggs
-A game where you catch stuff falling at you. This game was made as part of a research work.
+A game where you catch stuff falling at you. This game was made as a part of a research work.
 
 
 # How to build?

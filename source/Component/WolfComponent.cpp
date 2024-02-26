@@ -12,6 +12,10 @@ WolfComponent::WolfComponent()
 void WolfComponent::OnScaleChanged(Variant* pDataObject)
 {
 	UpdateSizeVar();
+
+	//screen size has probably changed, let's update touch stuff too
+	m_touchUpDelim = GetScreenSizeYf() / 2;
+	m_touchRightDelim = GetScreenSizeXf() / 2;
 }
 
 void WolfComponent::OnAdd(Entity* pEnt)
